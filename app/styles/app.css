@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  form {
+    width: 100%;
+  }
+
+  a {
+    touch-action: manipulation;
+  }
+
+  label {
+    user-select: none;
+  }
+}
