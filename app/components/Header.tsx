@@ -5,7 +5,7 @@ import { useOptionalUser } from "~/lib/utils";
 export function Header() {
   const user = useOptionalUser();
   return (
-    <header className="flex items-center justify-between p-8">
+    <header className="flex items-center justify-between py-8 px-6 sm:px-4">
       <Link
         to="/"
         className="block text-2xl font-extrabold tracking-wide text-pink-700 "

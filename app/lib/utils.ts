@@ -76,11 +76,21 @@ export function classNames(...classes: unknown[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-export async function copyToClipboard(event: MouseEvent<HTMLButtonElement>) {
+export function copyInnerTextToClipboard(event: MouseEvent<HTMLButtonElement>) {
   const text = event.currentTarget.innerText;
   navigator.clipboard.writeText(text).then(
     () => {
       console.log(`Copied ${text} clipboard!`);
+    },
+    function (err) {
+      console.error("Async: Could not copy text: ", err);
+    }
+  );
+}
+export function copyTextToClipboard(text: string) {
+  navigator.clipboard.writeText(text).then(
+    () => {
+      console.log(`Copied ${text} to clipboard!`);
     },
     function (err) {
       console.error("Async: Could not copy text: ", err);

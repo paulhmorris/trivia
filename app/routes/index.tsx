@@ -1,7 +1,7 @@
 import type { ActionFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { Button } from "~/components/common/Button";
+import { ButtonLink } from "~/components/common/ButtonLink";
 import { Input } from "~/components/common/Input";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -32,19 +32,21 @@ export default function Index() {
                 name="publicCode"
                 id="publicCode"
               />
-              <Button type="submit" variant="secondary">
+              <Button
+                type="submit"
+                variant="secondary"
+                size="lg"
+                className="w-auto"
+              >
                 Join
               </Button>
             </div>
           </div>
         </form>
         <p className="text-lg font-bold">or</p>
-        <Link
-          to="/host"
-          className="inline-flex w-full min-w-[100px] justify-center rounded border-2 border-black bg-pink-700 py-3 px-5 text-lg font-medium text-white transition duration-100 hover:bg-pink-800 sm:w-auto"
-        >
+        <ButtonLink to="/setup" size="xl">
           Host Game
-        </Link>
+        </ButtonLink>
       </div>
     </main>
   );

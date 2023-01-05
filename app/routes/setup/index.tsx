@@ -25,17 +25,17 @@ export const action: ActionFunction = async ({ request }) => {
 
   const publicCode = crypto.randomBytes(3).toString("hex").toLowerCase();
 
-  const newGame = await createGame({
-    data: {
-      name,
-      numberOfRounds,
-      defaultPointsPerQuestion,
-      userId: user ? user.id : undefined,
-      publicCode,
-    },
-  });
+  const data = {
+    name,
+    numberOfRounds,
+    defaultPointsPerQuestion,
+    userId: user ? user.id : undefined,
+    publicCode,
+  };
 
-  return redirect(`/host/game/${newGame.id}`);
+  const newGame = await createGame(data);
+
+  return redirect(`/setup/game/${newGame.id}`);
 };
 // TODO: Move this to the db
 const numberOfRoundsOptions = [1, 2, 3, 4, 5, 7, 10, 12, 15, 20];
@@ -43,7 +43,7 @@ const defaultPointsPerQuestionOptions = [1, 2, 3, 4, 5];
 
 export default function HostIndex() {
   return (
-    <main className="relative mt-[20%] flex w-full max-w-md flex-col items-center">
+    <main className="relative mt-12 flex w-full max-w-md flex-col items-center">
       <h1 className="text-center text-6xl font-extrabold text-black">
         Host a game
       </h1>
@@ -52,7 +52,7 @@ export default function HostIndex() {
         up in no time.
       </p>
       <form
-        action="/host?index"
+        action="/setup?index"
         method="post"
         className="mt-12 flex w-full flex-col gap-8"
       >

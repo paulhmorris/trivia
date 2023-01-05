@@ -41,7 +41,7 @@ model Team {
 
 model Game {
   id                       String  @id @default(cuid())
-  name                     String?
+  name                     String
   teams                    Team[]
   rounds                   Round[]
   creator                  User?   @relation(fields: [userId], references: [id])
@@ -58,11 +58,14 @@ model Round {
   id        String     @id @default(cuid())
   name      String?
   game      Game       @relation(fields: [gameId], references: [id])
+  order     Int
   questions Question[]
 
   gameId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([gameId, order])
 }
 
 model Question {

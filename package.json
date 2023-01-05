@@ -50,6 +50,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "remix-typedjson": "^0.1.6",
     "socket.io-client": "^4.5.4",
     "tiny-invariant": "^1.3.1"
   },
